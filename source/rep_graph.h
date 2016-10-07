@@ -12,9 +12,18 @@
 typedef struct digraph_matrix {
 	int vertex; //number of vertices
 	int edges; //number of edges
-	int **adj; //a pointer to the adjacency matrix;
+	int **matrix; //a pointer to the pointer of adjacency matrix;
 } digraph_m;
 
-digraph_m digraph_matrix_INIT (int v);
+//functions to matrix graph
+digraph_m *digraph_m_INIT(int v);
 int **matrix_init(int vertex, int value);
-void show_digraph_m(digraph_m *graph);
+void digraph_m_insert(digraph_m *graph, _vertex v, _vertex w);
+void digraph_m_remove(digraph_m *graph, _vertex v, _vertex w);
+void digraph_m_show(digraph_m *graph);
+
+typedef struct digraph_adjacency {
+	int vertex; //number of vertices
+	int edges; //number of edges
+	int **adj; //a pointer to the pointer of adjacency matrix;
+} digraph_adj;
