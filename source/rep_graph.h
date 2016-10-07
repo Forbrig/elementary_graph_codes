@@ -21,6 +21,9 @@ int **matrix_init(int vertex, int value);
 void digraph_m_insert(digraph_m *graph, _vertex v, _vertex w);
 void digraph_m_remove(digraph_m *graph, _vertex v, _vertex w);
 void digraph_m_show(digraph_m *graph);
+digraph_m * dfs_graph_m(digraph_m * graph, _vertex root);
+
+
 
 typedef struct digraph_adjacency {
 	int vertex; //number of vertices
