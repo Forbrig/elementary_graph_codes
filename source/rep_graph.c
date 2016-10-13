@@ -14,13 +14,12 @@ the matrix line x column is represented this way
 .
 .
 n:  0  0  0  0  ...  0
- 
- 
+
 */
 
 //this function allocate a matrix graph with V vertices and 0 edges
-digraph_m *digraph_m_INIT(int v) {
-	digraph_m *graph = malloc(sizeof *graph);
+_digraph_m *digraph_m_INIT(int v) {
+	_digraph_m *graph = malloc(sizeof *graph);
 	graph->edges = 0;
 	graph->vertex = v;
 	graph->matrix = matrix_init(graph->vertex, 0);
@@ -37,12 +36,12 @@ int **matrix_init(int vertex, int value) {
 			matrix[i][j] = value;
 		}
 	}
-	return matrix; //pointer to the matrix of adjacenci
+	return matrix; //pointer to the matrix of adjacency
 }
 
 //pass as argument the graph and the 2 vertex (v and w) that we wanna add an edge
 //caution: if you dont wanna add an edge to the vertex itself
-void digraph_m_insert(digraph_m *G, _vertex v, _vertex w) {
+void digraph_m_insert(_digraph_m *G, _vertex v, _vertex w) {
 	if (G->matrix[v][w] == 0) {
 		G->matrix[v][w] = 1;
 		G->edges++; //add the total of edges
@@ -51,7 +50,7 @@ void digraph_m_insert(digraph_m *G, _vertex v, _vertex w) {
 }
 
 //remove the edge vw of the vertex v and w if it has
-void digraph_m_remove(digraph_m *graph, _vertex v, _vertex w) {
+void digraph_m_remove(_digraph_m *graph, _vertex v, _vertex w) {
 	if (graph->matrix[v][w] == 1) {
 		graph->matrix[v][w] = 0;
 		graph->edges--; //add the total of edges
@@ -60,10 +59,12 @@ void digraph_m_remove(digraph_m *graph, _vertex v, _vertex w) {
 }
 
 //print the digraph in matrix form
-void digraph_m_show(digraph_m *graph) {
+//needs an upgrade to print the vertex name on the column
+void digraph_m_show(_digraph_m *graph) {
 	int i, j;
+	printf("The graph matrix is\n");
 	for (i = 0; i < graph->vertex; i++) {
-		printf("%2d: ", i); //lines
+		printf("%d: ", i); //lines
 		for(j = 0; j < graph->vertex; j++) {
 			printf("%d ", graph->matrix[i][j]); //column
 		}
@@ -72,3 +73,12 @@ void digraph_m_show(digraph_m *graph) {
 	return;
 }
 
+//graph adjacency functions
+
+//creates a pointer node to represent the adjacency
+_node *NEWnode(_vertex w, _node *next) {
+   _node *a = malloc(sizeof(_node));
+   a->w = w;
+   a->next = next;
+   return a;
+}

@@ -2,7 +2,7 @@
 #include "rep_graph.h"
 
 void test_digraph_matrix_creation() {
-	digraph_m *v;
+	_digraph_m *v;
 	v = digraph_m_INIT(5); //5x5
 	digraph_m_insert(v, 0, 1);
 	digraph_m_insert(v, 1, 0);

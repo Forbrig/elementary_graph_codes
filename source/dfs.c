@@ -5,7 +5,7 @@
 #include "rep_graph.h"
 
 //graph represented with matrix
-digraph_m * dfs_graph_m(digraph_m * graph, _vertex root) {
+_digraph_m * dfs_graph_m(_digraph_m * graph, _vertex root) {
 	
 	
 	
