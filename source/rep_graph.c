@@ -18,7 +18,7 @@ n:  0  0  0  0  ...  0
 */
 
 //this function allocate a matrix graph with V vertices and 0 edges
-_digraph_m *digraph_m_INIT(int v) {
+_digraph_m *digraph_m_INIT(_vertex v) {
 	_digraph_m *graph = malloc(sizeof *graph);
 	graph->edges = 0;
 	graph->vertex = v;
@@ -27,7 +27,7 @@ _digraph_m *digraph_m_INIT(int v) {
 }
 
 //matrix of adjacency: allocate a matrix with vertex * vertex '[vertex][vertex]' and put 'value' in all positions.
-int **matrix_init(int vertex, int value) {
+int **matrix_init(_vertex vertex, int value) {
 	int i, j;
 	int **matrix = malloc(vertex * sizeof(int*)); //vertex lines
 	for (i = 0; i < vertex; i++) {
@@ -76,7 +76,7 @@ void digraph_m_show(_digraph_m *graph) {
 //graph adjacency functions
 
 //creates a pointer node to represent the adjacency
-_node *NEWnode(_vertex w, _node *next) {
+_node *new_node(_vertex w, _node *next) {
    _node *a = malloc(sizeof(_node));
    a->w = w;
    a->next = next;

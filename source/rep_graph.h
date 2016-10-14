@@ -30,7 +30,7 @@ _digraph_m * dfs_graph_m(_digraph_m * graph, _vertex root);
 //each node v of the vector contains a pointer to another node w that has an edge v to w.
 typedef struct node_adj { 
    _vertex w;
-   struct node *next; 
+   struct node_adj *next; 
 } _node;
 
 typedef struct digraph_adjacency {
@@ -39,4 +39,4 @@ typedef struct digraph_adjacency {
 	_node **adj; //pointer to the pointer of adjacency list vector;
 } _digraph_adj;
 
-_node *NEWnode(_vertex w, _node *next);
+_node *new_node(_vertex w, _node *next);
