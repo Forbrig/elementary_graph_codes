@@ -75,10 +75,36 @@ void digraph_m_show(_digraph_m *graph) {
 
 //graph adjacency functions
 
-//creates a pointer node to represent the adjacency
+//creates a pointer node to represent the vertex a and the neighbour w
 _node *new_node(_vertex w, _node *next) {
    _node *a = malloc(sizeof(_node));
-   a->w = w;
-   a->next = next;
+   a->w = w; //the neighbour
+   a->next = next; //next node of the list
    return a;
+}
+
+//create a graph in adjacency form with 'n' vertexes and any edge
+_digraph_adj *digraph_adj_INIT(int n) {
+	_digraph_adj *graph = malloc(sizeof(*graph));
+	graph->vertex = n; //number of vertexes
+	graph->edges = 0; ////number of edges
+	graph->adj = malloc(n * sizeof(_node*)); //number v of nodes
+	_vertex v;
+	for (v = 0; v < n; v++) {
+		graph->adj[v] = NULL;
+	}
+	return graph;
+}
+
+//insert the edge (v,w)
+//if the edge already exist it return
+void digraph_adj_insert(_digraph_adj graph, _vertex v, _vertex w) { 
+	_node *a;
+	for (a = graph->adj[v]; a != NULL; a = a->next) {
+		if (a->w == w) { //already have that edge
+			return;
+		}
+	}
+	graph->adj[v] = new_node(w, graph->adj[v]);
+	graph->edges++;
 }
