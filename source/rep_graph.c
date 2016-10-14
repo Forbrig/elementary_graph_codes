@@ -98,7 +98,7 @@ _digraph_adj *digraph_adj_INIT(int n) {
 
 //insert the edge (v,w)
 //if the edge already exist it return
-void digraph_adj_insert(_digraph_adj graph, _vertex v, _vertex w) { 
+void digraph_adj_insert(_digraph_adj *graph, _vertex v, _vertex w) { 
 	_node *a;
 	for (a = graph->adj[v]; a != NULL; a = a->next) {
 		if (a->w == w) { //already have that edge
@@ -108,3 +108,18 @@ void digraph_adj_insert(_digraph_adj graph, _vertex v, _vertex w) {
 	graph->adj[v] = new_node(w, graph->adj[v]);
 	graph->edges++;
 }
+
+void digraph_adj_show(_digraph_adj *graph) {
+	int i;
+	_node *j;
+	printf("The graph adjacency is\n");
+	for (i = 0; i < graph->vertex; i++) {
+		printf("%d: ", i); //lines
+		for(j = graph->adj[i]; j != NULL; j = j->next) { //until there is no adjacency
+			printf("%d ", j->w); //adjacency
+		}
+		printf("\n");
+	}
+	return;
+}
+

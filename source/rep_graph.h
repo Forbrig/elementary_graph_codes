@@ -41,4 +41,7 @@ typedef struct digraph_adjacency {
 
 _node *new_node(_vertex w, _node *next);
 _digraph_adj *digraph_adj_INIT(int v);
-void digraph_adj_insert(_digraph_adj graph, _vertex v, _vertex w);
+void digraph_adj_insert(_digraph_adj *graph, _vertex v, _vertex w);
+
+
+void digraph_adj_show(_digraph_adj *graph);
